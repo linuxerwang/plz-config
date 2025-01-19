@@ -1,0 +1,37 @@
+; Please config file
+; Leaving this file as is is enough to use plz to build your project.
+; Please will stay on whatever version you currently have until you run
+; 'plz update', when it will download the latest available version.
+;
+; Or you can uncomment the following to pin everyone to a particular version;
+; when you change it all users will automatically get updated.
+; [please]
+; version = 17.13.0
+
+[parse]
+preloadsubincludes = ///go//build_defs:go
+preloadsubincludes = ///proto//build_defs:proto
+preloadsubincludes = ///go_proto//build_defs:go_proto
+
+[Plugin "go"]
+Target = //plugins:go
+ImportPath = github.com/linuxerwang/plz-config
+GoTool = //third_party/go:toolchain|go
+STDLib = //third_party/go:std
+Modfile = //third_party/go:modfile
+
+[Plugin "proto"]
+Target = //plugins:proto
+LanguageDef = ///go_proto//build_defs:go_proto
+ProtocTool = //third_party/proto:protoc
+
+[Plugin "go_proto"]
+Target = //plugins:go_proto
+GrpcDep = ///third_party/go/google.golang.org_grpc
+GrpcPlugin = ///third_party/go/google.golang.org_grpc//cmd/protoc-gen-go-grpc
+ProtoPlugin = ///third_party/go/google.golang.org_protobuf//cmd/protoc-gen-go
+
+[Alias "puku"]
+Cmd = run //third_party/binary:puku --
+PositionalLabels = true
+Desc = A tool to update BUILD files in Go packages

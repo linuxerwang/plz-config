@@ -1,0 +1,9 @@
+package(default_visibility = ["PUBLIC"])
+
+remote_file(
+    name = "protoc",
+    binary = True,
+    exported_files = ["bin/protoc"],
+    extract = True,
+    url = "https://github.com/protocolbuffers/protobuf/releases/download/v29.3/protoc-29.3-linux-x86_64.zip",
+)
