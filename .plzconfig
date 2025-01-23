@@ -27,8 +27,9 @@ ProtocTool = //third_party/proto:protoc
 
 [Plugin "go_proto"]
 Target = //plugins:go_proto
-GrpcDep = ///third_party/go/google.golang.org_grpc
-GrpcPlugin = ///third_party/go/google.golang.org_grpc//cmd/protoc-gen-go-grpc
+ProtoDep = //third_party/go:google.golang.org_protobuf
+GrpcDep = ///third_party/go/google.golang.org_grpc//:grpc
+GrpcPlugin = ///third_party/go/google.golang.org_grpc_cmd_protoc-gen-go-grpc:protoc-gen-go-grpc
 ProtoPlugin = ///third_party/go/google.golang.org_protobuf//cmd/protoc-gen-go
 
 [Alias "puku"]

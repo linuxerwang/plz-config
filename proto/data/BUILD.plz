@@ -1,9 +1,24 @@
 package(default_visibility = ["PUBLIC"])
 
 proto_library(
-    name = "data",
+    name = "data_proto",
     srcs = [
         "data.proto",
     ],
     languages = ["go"],
 )
+
+grpc_library(
+    name = "data",
+    srcs = ["data.proto"],
+    visibility = ["PUBLIC"],
+    languages = ["go"],
+    deps = [
+        "///third_party/go/google.golang.org_grpc//:grpc",
+        "///third_party/go/google.golang.org_grpc//codes",
+        "///third_party/go/google.golang.org_grpc//status",
+        "///third_party/go/google.golang.org_protobuf//reflect/protoreflect",
+        "///third_party/go/google.golang.org_protobuf//runtime/protoimpl",
+    ],
+)
+

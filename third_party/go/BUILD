@@ -47,3 +47,9 @@ go_repo(
     module = "google.golang.org/protobuf",
     version = "v1.36.3",
 )
+
+go_repo(
+    licences = ["Apache-2.0"],
+    module = "google.golang.org/grpc/cmd/protoc-gen-go-grpc",
+    version = "v1.5.1",
+)
